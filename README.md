@@ -5,6 +5,8 @@
 
 1. Node 11+
 
+## Scrips
+
 ### `npm run watch`
 
 Runs the app in the development mode.<br>
