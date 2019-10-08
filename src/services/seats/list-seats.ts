@@ -61,3 +61,17 @@ export const availableSeats = (req: Request, response: Response) => {
         response.status(500).json(err);
     });
 }
+
+export const seatData = (req: Request, response: Response) => {
+    const seatNumber = req.query.seatNumber;
+
+    return list({ seatNumber }).then((results) => {
+        if (seatNumber) {
+            response.json(results[0]);
+        } else {
+            response.json(results);
+        }
+    }).catch((err) => {
+        response.status(500).json(err);
+    });
+}

@@ -67,5 +67,6 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.get('/seats', seatsController.listSeats);
 app.get('/cheapestSeat', seatsController.cheapestSeat);
 app.get('/availableSeats', seatsController.availableSeats);
+app.get('/seatData', seatsController.seatData);
 
 export default app;
