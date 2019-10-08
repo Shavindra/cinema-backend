@@ -68,5 +68,6 @@ app.get('/seats', seatsController.listSeats);
 app.get('/cheapestSeat', seatsController.cheapestSeat);
 app.get('/availableSeats', seatsController.availableSeats);
 app.get('/seatData', seatsController.seatData);
+app.post('/bookSeat', seatsController.bookSeat);
 
 export default app;
