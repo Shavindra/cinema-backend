@@ -2,8 +2,9 @@ import { Seat } from '../../src/repository';
 import { toSeatModel } from '../../src/models';
 
 export const bulkWriteSeats = (seatData) => {
+    const seatList = seatData.map((item: any) => {
+        item.value = parseFloat(item.price.split(/(\d+)/)[1]);
 
-    const seatList = seatData.map(item => {
         return {
             updateOne: {
                 filter: {
@@ -17,8 +18,8 @@ export const bulkWriteSeats = (seatData) => {
 
     return Seat.bulkWrite(seatList)
         .then(() => {
-            return Seat.find({}).then((results)=>{
-                return results.map((item)=>{return toSeatModel(item)})
+            return Seat.find({}).then((results) => {
+                return results.map((item) => { return toSeatModel(item) })
             })
         })
         .catch(console.error);

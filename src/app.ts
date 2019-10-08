@@ -32,7 +32,9 @@ let running: any;
 mongoose.connection.on('connected', function () {
     console.info('connected to mongo server.');
 
-    const seatList = seatData.map(item => {
+    const seatList = seatData.map((item: any) => {
+        item.value = parseFloat(item.price.split(/(\d+)/)[1]);
+
         return {
             updateOne: {
                 filter: {

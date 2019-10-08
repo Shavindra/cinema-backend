@@ -5,7 +5,7 @@ export const toSeatModel = (dao) => {
 
     const seat = dao.toObject();
     delete seat.__v;
-    return {
+    return { // NB: Not exposing the "value" prop to public. Only expose properties they need
         id: seat._id.toString(),
         seatNumber: seat.seatNumber,
         price: seat.price,
