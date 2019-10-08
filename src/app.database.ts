@@ -20,10 +20,7 @@ const retryInterval = 5000;
 
 function connectWithRetry() {
 
-    mongoose.connect(dbConfig.uri, dbOptions, function (err) {
-        if (!err) {
-            return;
-        }
+    mongoose.connect(dbConfig.uri, dbOptions).catch((err) => {
 
         if (retries) {
             console.warn('Failed to connect to mongo on startup - retrying in 5 sec');
@@ -34,7 +31,6 @@ function connectWithRetry() {
         console.error(err, 'Failed to connect to mongo on startup after several attempts.');
         throw new Error('Failed to open a initial connection to MongoDB');
     })
-    .catch(function () {});
 }
 
 connectWithRetry();

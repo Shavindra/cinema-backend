@@ -3,7 +3,7 @@ import { seatRepo } from '../../repository';
 import { toSeatModel } from '../../models';
 import { StatusCodes } from '../../config';
 
-export const bookSeat = (req: Request, res: Response) => {
+export const bookSeat = (req: any, res: any) => {
 
     const bookSeatUpdatePayload = {
         available: false
@@ -14,7 +14,7 @@ export const bookSeat = (req: Request, res: Response) => {
         available: true
     }
 
-    seatRepo
+    return seatRepo
         .update(bookSeatFilter, bookSeatUpdatePayload)
         .then((result) => {
             if (!result) { throw new Error(JSON.stringify(StatusCodes.BAD_REQUEST)) }

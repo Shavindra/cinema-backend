@@ -7,5 +7,5 @@ const schema = new mongoose.Schema({
     available: {type: Boolean, required: false},
     disabilityAccessible: {type: Boolean, required: false}
 });
-export const Seat = mongoose.model('seat', schema, 'seats');
 
+export const Seat = mongoose.models.Seat || mongoose.model('Seat', schema, 'seats');
